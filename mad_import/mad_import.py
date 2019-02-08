@@ -1,13 +1,13 @@
 import pieqt
 import sys
-def mad_import(modules):
-	for module in modules:
-		libs = [m[0] for m in filter(lambda a: type(a[1]) == type(module), module.__dict__.items())]
-		for lib in libs:
-			__import__(lib)
-		generate_import_module(libs,module)
-		generate_from_modules_import_all(libs)
-		#return libs
+def mad_import(module):
+	#for module in modules:
+	libs = [m[0] for m in filter(lambda a: type(a[1]) == type(module), module.__dict__.items())]
+	for lib in libs:
+		__import__(lib)
+	generate_import_module(libs,module)
+	generate_from_modules_import_all(libs)
+	#return libs
 
 
 
@@ -49,4 +49,4 @@ def generate_from_modules_import_all(libs):
 # 		importlib.import_module(module)
 # print(QApplication)
 
-mad_import([pieqt])
+mad_import(pieqt)
