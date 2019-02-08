@@ -1,17 +1,21 @@
 import pieqt
 import sys
-def mad_import(modules):
-	for module in modules:
-		libs = [m[0] for m in filter(lambda a: type(a[1]) == type(module), module.__dict__.items())]
-		for lib in libs:
-			__import__(lib)
-		generate_import_module(libs,module)
-		generate_from_modules_import_all(libs)
-		#return libs
+import importlib
+def mad_import(module):
+	#for module in modules:
+	libs = [m[0] for m in filter(lambda a: type(a[1]) == type(module), module.__dict__.items())]
+	print(libs)
+	for lib in libs:
+		__import__(lib)
+	generate_runtime_python_imports(libs,module)
+	generate_runtime_python_imports_from(libs)
+	importlib.import_module('runtime_python_imports_from')
+	# __import__('runtime_python_imports_from.py')
+	#return libs
 
 
 
-def generate_import_module(libs,module):
+def generate_runtime_python_imports(libs,module):
 	dic = module.__dict__.items()
 	moduleNames = []
 	roukzouk = []
@@ -36,7 +40,7 @@ def generate_import_module(libs,module):
 	with open("runtime_python_imports.py", "w") as runtime_python_imports:
 		runtime_python_imports.write(import_line_text)
 
-def generate_from_modules_import_all(libs):
+def generate_runtime_python_imports_from(libs):
 	import_line_from_text = ""
 	for lib in libs:
 		import_line_from_text += "from "+lib+" import *\n"
@@ -49,4 +53,4 @@ def generate_from_modules_import_all(libs):
 # 		importlib.import_module(module)
 # print(QApplication)
 
-mad_import([pieqt])
+# mad_import(pieqt)
