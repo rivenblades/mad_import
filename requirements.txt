@@ -1,0 +1,1 @@
+git+git://https://github.com/rivenblades/mad_import.git@4c6e03abfb91e8a96fec1eaf7d25fbf73499fbc1
