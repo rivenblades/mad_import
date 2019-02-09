@@ -1,0 +1,7 @@
+setup.py
+mad_import.egg-info/PKG-INFO
+mad_import.egg-info/SOURCES.txt
+mad_import.egg-info/dependency_links.txt
+mad_import.egg-info/requires.txt
+mad_import.egg-info/top_level.txt
+mad_import.egg-info/zip-safe
